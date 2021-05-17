@@ -27,3 +27,9 @@ pluralize_gift <- function(gift){
 
   return(gift)
 }
+
+
+test_that("must provide an argument", {
+  expect_error(pluralize_gift())
+})
+
