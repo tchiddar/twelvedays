@@ -13,11 +13,19 @@
 #' @import purrr
 #'
 #' @export
-sing_day <- function(dataset, line, phrase_col){
+sing_day <- function(data, line, phrase_col){
+  data <- data %>% 
+    filter(Day <= line)
+  
+  phrases <- data %>% pull({{phrase_col}})
+  startingline <- paste("On the",data$Day.in.Words[line], "day of Christmas, my true love gave to me,")
+  
+  if (line > 1){
+    phrases[1] <- paste("and", phrases[1])
+  }
 
-  phrases <- dataset %>% pull({{phrase_col}})
-
-  #????
-
-
+  all <- paste(phrases[line:1]) #%>% str_c(collapse = ",")
+  allofit <- paste( all)
+  cat(startingline, sep = "\n")
+  cat(allofit, sep = "\n")
 }
