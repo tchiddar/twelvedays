@@ -12,9 +12,18 @@
 #' @export
 pluralize_gift <- function(gift){
 
-gift <- gift %>%
-  str_replace()
+  gift <- as.vector(gift)
+  gift <- as.character(gift)
+  if (str_detect(gift, "oo")){
+    return("geese")
+  } else if(str_detect(gift, "partridge")){
+    return("partridge")
+  }else if (str_detect(gift, "y$")){
+    return("ladies")
+  }else{
+    gift <- gift %>%
+      str_replace("$","s")
+  }
 
-return(gift)
-
+  return(gift)
 }
