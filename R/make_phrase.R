@@ -19,11 +19,16 @@
 
 
 make_phrase <- function(num, num_word, item, verb, adjective, location){
-
-  verb <- str_replace_na(verb, "")
-
-  #????
-
-
+  
+  num_word <- english::english(num)
+  verb <- str_replace_na(verb,"")
+  location <- str_replace_na(location,"")
+  adjective <- str_replace_na(adjective,"")
+  
+  
+  phrase <- paste(num_word,adjective,item,verb,location)
+  phrase <- str_replace_all(phrase, "  ", " ")
+  phrase <- str_remove(phrase, "\\s$")
+  return(phrase)
 }
 
