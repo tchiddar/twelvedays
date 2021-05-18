@@ -32,3 +32,11 @@ make_phrase <- function(num, num_word, item, verb, adjective, location){
   return(phrase)
 }
 
+
+test_that("must provide location argument", {
+  expect_error(make_phrase(num = "5", 
+                           num_word = "three", 
+                           item = "laptop", 
+                           verb = "run", 
+                           adjective = "loud"))
+})
