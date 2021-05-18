@@ -29,3 +29,8 @@ sing_day <- function(data, line, phrase_col){
   cat(startingline, sep = "\n")
   cat(allofit, sep = "\n")
 }
+
+
+test_that("the line argument must be numeric", {
+  expect_error(sing_day(data, "5", phrase_col = Full.Phrase))
+})
